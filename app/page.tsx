@@ -13,9 +13,9 @@ export default function Home() {
   useEffect(() => {
     let x = 0;
     let myemojies = [];
-    let allEmojies = ["🤢", "😝", "💩", "😵", "🤯", "🤣", "🤩", "🤮"];
+    let allEmojies = ["🤢", "😝", "💩", "😵", "🤯", "🤣", "🤩", "🤮", "🤑", "😭", "😨", "😡", "🥳", "🥸", "🤠", "🤡", "😈", "👹"];
 
-    for (let i = 0; i < 75; i++) {
+    for (let i = 0; i < 50; i++) {
       let randomX = getRandomArbitrary(0, window.innerWidth);
 
       myemojies.push({emoji: allEmojies[Math.floor(Math.random()*allEmojies.length)], transition: {duration: getRandomArbitrary(3, 7), delay: getRandomArbitrary(0, .1)}, initial: {x: randomX}, animate: {rotateZ: [getRandomArbitrary(-45, 45), getRandomArbitrary(-45, 45), getRandomArbitrary(-45, 45), getRandomArbitrary(-45, 45)], x:[randomX+getRandomArbitrary(-30, 30), randomX+getRandomArbitrary(-30, 30), randomX+getRandomArbitrary(-30, 30)]}});
@@ -30,7 +30,7 @@ export default function Home() {
         <AnimatePresence>
           {emojies.map((emoji, i) => {
             return (
-              <motion.ul key={i} transition={{ duration: emoji.transition.duration, delay: emoji.transition.delay, repeat: Infinity, repeatDelay: .1, type: "spring", ease: "backOut" }} initial={{ opacity: 1, y: 50, x: emoji.initial.x }} animate={{ opacity: 0, rotateZ: emoji.animate.rotateZ, x: emoji.animate.x, y: -200 }} exit={{ opacity: 0 }}  className="absolute bottom-0 text-5xl">
+              <motion.ul key={i} transition={{ duration: emoji.transition.duration, delay: emoji.transition.delay, repeat: Infinity, repeatDelay: .1, type: "spring", ease: "backOut" }} initial={{ opacity: 1, y: 100, x: emoji.initial.x }} animate={{ opacity: 0, rotateZ: emoji.animate.rotateZ, x: emoji.animate.x, y: -200 }} exit={{ opacity: 0 }}  className="absolute bottom-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
               {emoji.emoji}
               </motion.ul>
             )
@@ -66,7 +66,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* <section className="relative w-screen h-screen grid place-content-center p-4">
+      <section className="relative w-screen h-screen grid place-content-center p-4">
         <div className="absolute top-0 h-screen w-screen -z-10">
           <div className="absolute w-screen top-0 flex justify-between px-2">
             <div className="w-10 h-10">
@@ -84,10 +84,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <motion.h1 transition={{ duration: .75, delay: .3 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-white text-balance sm:text-7xl md:text-8xl lg:text-8xl">
+        <motion.h1 transition={{ duration: .75, delay: .35 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-white text-balance sm:text-7xl md:text-8xl lg:text-8xl">
           Cryptoverse is nothin without memes
         </motion.h1>
-      </section> */}
+      </section>
     </>
   );
 }
