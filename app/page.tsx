@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -110,7 +110,7 @@ export default function Home() {
       <section className="min-h-screen w-screen grid py-16">
         <div>
           <motion.h1 transition={{ duration: .75, delay: 0 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-white text-balance sm:text-7xl md:text-8xl lg:text-8xl my-16">
-            Earn <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-400">eww </span> 🪙
+            Mint <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-400">unlimited</span> memes.
           </motion.h1>
         </div>
       </section>
