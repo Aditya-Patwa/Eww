@@ -11,17 +11,19 @@ interface PlaygroundConfigInterface {
 }
 
 function drawPlayground(ctx: CanvasRenderingContext2D, playgroundConfig: PlaygroundConfigInterface) {
-    let frame = playgroundConfig.frame;
-    frame.draw(ctx);
-
-    playgroundConfig.layers.forEach((layer) => {
-        layer.draw(ctx);
-    });
-
-    ctx.clearRect(0, 0, window.innerWidth, frame.position.y);
-    ctx.clearRect(0, 0, frame.position.x, window.innerHeight);
-    ctx.clearRect(frame.position.x+frame.width, 0, frame.position.x, window.innerHeight);
-    ctx.clearRect(0, frame.position.y+frame.height, window.innerWidth, frame.height);
+    if (typeof window !== "undefined") {
+        let frame = playgroundConfig.frame;
+        frame.draw(ctx);
+    
+        playgroundConfig.layers.forEach((layer) => {
+            layer.draw(ctx);
+        });
+    
+        ctx.clearRect(0, 0, window.innerWidth, frame.position.y);
+        ctx.clearRect(0, 0, frame.position.x, window.innerHeight);
+        ctx.clearRect(frame.position.x+frame.width, 0, frame.position.x, window.innerHeight);
+        ctx.clearRect(0, frame.position.y+frame.height, window.innerWidth, frame.height);
+    }
 }
 
 
@@ -30,8 +32,12 @@ export default function Playground() {
     const canvasContextRef = useRef<CanvasRenderingContext2D | null>(null);
     const [startPoint, setStartPoint] = useState({x: 0, y: 0});
     const [isPointerHeld, setIsPointerHeld] = useState(false);
-    const [playgroundConfig, setPlaygroundConfig] = useState<PlaygroundConfigInterface>({frame: new Frame({x: (window.innerWidth-window.innerWidth/2)/2, y: (window.innerHeight-window.innerHeight/1.5)/2}, window.innerWidth/2, window.innerHeight/1.5), layers: []});
+    const [playgroundConfig, setPlaygroundConfig] = useState<PlaygroundConfigInterface>({frame: new Frame({x: 100, y: 100}, 100, 75), layers: []});
     const [activeShape, setActiveShape] = useState<Rectangle>(new Rectangle({x: 0, y: 0},  0, 0));
+
+    useEffect(() => {
+        setPlaygroundConfig({...playgroundConfig, frame: new Frame({x: (window.innerWidth-window.innerWidth/2)/2, y: (window.innerHeight-window.innerHeight/1.5)/2}, window.innerWidth/2, window.innerHeight/1.5)})
+    }, []);
 
     useEffect(() => {
         let canvas = canvasRef.current!;
@@ -55,26 +61,31 @@ export default function Playground() {
     }
 
     function touchMove(e: any) {
-        let ctx = canvasContextRef.current!;
-        if(isPointerHeld) {
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-            drawPlayground(ctx, playgroundConfig);
-            ctx.fillStyle = "rgba(69, 69, 69, .5)";
-            ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
+        if (typeof window !== "undefined") {
+            // Client-side-only code
+            let ctx = canvasContextRef.current!;
+            if(isPointerHeld) {
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                drawPlayground(ctx, playgroundConfig);
+                ctx.fillStyle = "rgba(69, 69, 69, .5)";
+                ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
+            }
         }
     }
 
     function touchEnd(e: any) {
-        let ctx = canvasContextRef.current!;
-        setIsPointerHeld(false);
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        ctx.fillStyle = "rgba(255, 255, 255, 1)";
-        ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
-
-        let shape = new Rectangle({x: activeShape.position.x, y: activeShape.position.y}, e.clientX-activeShape.position.x, e.clientY-activeShape.position.y);
-
-        setActiveShape(shape);
-        setPlaygroundConfig({...playgroundConfig, layers: [...playgroundConfig.layers, shape]})
+        if (typeof window !== "undefined") {
+            let ctx = canvasContextRef.current!;
+            setIsPointerHeld(false);
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            ctx.fillStyle = "rgba(255, 255, 255, 1)";
+            ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
+    
+            let shape = new Rectangle({x: activeShape.position.x, y: activeShape.position.y}, e.clientX-activeShape.position.x, e.clientY-activeShape.position.y);
+    
+            setActiveShape(shape);
+            setPlaygroundConfig({...playgroundConfig, layers: [...playgroundConfig.layers, shape]})
+        }
     }
 
     return (
