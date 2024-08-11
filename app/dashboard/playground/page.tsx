@@ -1,96 +1,61 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import Frame from "@/components/playground/elements/Frame";
-import { Rectangle, Arc, Polygon } from "@/components/playground/elements/Shapes";
+import Link from "next/link";
+import Playground from "@/components/playground/Playground";
+import { ShapesMenu } from "@/components/menubar/menubar";
+import { useState } from "react";
+import { Type, MousePointer2, Hand, Image, Frame } from "lucide-react";
+import {
+    ToggleGroup,
+    ToggleGroupItem,
+} from "@/components/ui/toggle-group";
+import { PlaygroundContext } from "@/components/playground/PlaygroundContext";
 
-
-
-interface PlaygroundConfigInterface {
-    frame: Frame,
-    layers: (Rectangle | Arc | Polygon)[],
-}
-
-function drawPlayground(ctx: CanvasRenderingContext2D, playgroundConfig: PlaygroundConfigInterface) {
-    if (typeof window !== "undefined") {
-        let frame = playgroundConfig.frame;
-        frame.draw(ctx);
-    
-        playgroundConfig.layers.forEach((layer) => {
-            layer.draw(ctx);
-        });
-    
-        ctx.clearRect(0, 0, window.innerWidth, frame.position.y);
-        ctx.clearRect(0, 0, frame.position.x, window.innerHeight);
-        ctx.clearRect(frame.position.x+frame.width, 0, frame.position.x, window.innerHeight);
-        ctx.clearRect(0, frame.position.y+frame.height, window.innerWidth, frame.height);
-    }
-}
-
-
-export default function Playground() {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const canvasContextRef = useRef<CanvasRenderingContext2D | null>(null);
-    const [startPoint, setStartPoint] = useState({x: 0, y: 0});
-    const [isPointerHeld, setIsPointerHeld] = useState(false);
-    const [playgroundConfig, setPlaygroundConfig] = useState<PlaygroundConfigInterface>({frame: new Frame({x: 100, y: 100}, 100, 75), layers: []});
-    const [activeShape, setActiveShape] = useState<Rectangle>(new Rectangle({x: 0, y: 0},  0, 0));
-
-    useEffect(() => {
-        setPlaygroundConfig({...playgroundConfig, frame: new Frame({x: (window.innerWidth-window.innerWidth/2)/2, y: (window.innerHeight-window.innerHeight/1.5)/2}, window.innerWidth/2, window.innerHeight/1.5)})
-    }, []);
-
-    useEffect(() => {
-        let canvas = canvasRef.current!;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        canvasContextRef.current = canvas.getContext("2d")!;
-        let ctx = canvasContextRef.current!;
-
-        drawPlayground(ctx, playgroundConfig);
-
-    }, [playgroundConfig]);
-
-    function touchStart(e: any) {
-        let ctx = canvasContextRef.current!;
-
-        let shape = new Rectangle({x: e.clientX, y: e.clientY}, 0, 0);
-
-        setActiveShape(shape);
-        setStartPoint({x: e.clientX, y: e.clientY});
-        setIsPointerHeld(true);
-    }
-
-    function touchMove(e: any) {
-        if (typeof window !== "undefined") {
-            // Client-side-only code
-            let ctx = canvasContextRef.current!;
-            if(isPointerHeld) {
-                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-                drawPlayground(ctx, playgroundConfig);
-                ctx.fillStyle = "rgba(69, 69, 69, .5)";
-                ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
-            }
-        }
-    }
-
-    function touchEnd(e: any) {
-        if (typeof window !== "undefined") {
-            let ctx = canvasContextRef.current!;
-            setIsPointerHeld(false);
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-            ctx.fillStyle = "rgba(255, 255, 255, 1)";
-            ctx.fillRect(startPoint.x, startPoint.y, e.clientX-startPoint.x, e.clientY-startPoint.y);
-    
-            let shape = new Rectangle({x: activeShape.position.x, y: activeShape.position.y}, e.clientX-activeShape.position.x, e.clientY-activeShape.position.y);
-    
-            setActiveShape(shape);
-            setPlaygroundConfig({...playgroundConfig, layers: [...playgroundConfig.layers, shape]})
-        }
-    }
+export default function PlaygroundPage() {
+    const [method, setMethod] = useState("pointer");
 
     return (
-        <canvas className="bg-black bg-[radial-gradient(#52525b_1px,transparent_1px)] [background-size:32px_32px] cursor-crosshair" onPointerDown={(e) => touchStart(e)} onPointerMove={(e) => touchMove(e)} onPointerUp={touchEnd} ref={canvasRef}>
+        <PlaygroundContext.Provider value={{activeMethod: method}}>
+            <main className="h-screen w-screen overflow-hidden">
+                <header className="fixed w-screen grid place-content-center z-10">
+                    <nav className="w-screen py-2 px-16 bg-black/40 backdrop-blur-sm border-b border-zinc-100/10 grid justify-center">
+                        {/* <div> */}
+                        <ToggleGroup type="single" defaultValue={method} onValueChange={(value) => setMethod(value)}>
+                            <ToggleGroupItem value="pointer" aria-label="Toggle Pointer">
+                                <MousePointer2 className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="frame" aria-label="Toggle Pointer">
+                                <Frame className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="grab" aria-label="Toggle hand">
+                                <Hand className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="text" aria-label="Toggle type">
+                                <Type className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="image" aria-label="Toggle image">
+                                <Image className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            {/* <ToggleGroupItem value="shape" aria-label="Toggle shape"> */}
+                            <ShapesMenu />
+                            {/* </ToggleGroupItem> */}
+                        </ToggleGroup>
+                        {/* </div> */}
+                    </nav>
+                </header>
+                <section className="absolute inset-y-0 py-2 px-4 z-20 bg-black/40 backdrop-blur-sm border-r border-zinc-100/20">
+                    <div>
+                        <Link href="/">
+                            <h1 className="font-extrabold text-2xl">
+                                🤢eww
+                            </h1>
+                        </Link>
+                    </div>
+                </section>
+                <Playground />
+                <section className="absolute inset-y-0 right-0 p-16 z-20 bg-black/40 backdrop-blur-sm border-l border-zinc-100/20">
 
-        </canvas>
+                </section>
+            </main>
+        </PlaygroundContext.Provider>
     )
 }
