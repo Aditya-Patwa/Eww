@@ -1,6 +1,6 @@
 "use client"
 import * as React from "react";
-import { Component, RectangleHorizontal, Circle, Minus, ArrowUpLeft, Shapes, } from "lucide-react";
+import { Component, RectangleHorizontal, Circle, Minus, ArrowUpLeft, Shapes, Bot, Brain } from "lucide-react";
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -10,6 +10,18 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer";
+
+
 
 const shapes: { title: string; command: string, shape: React.ReactNode }[] = [
     { title: "Rectangle", command: "R", shape: <RectangleHorizontal className="w-4 h-4" /> },
@@ -68,4 +80,28 @@ export function ShapesMenu() {
             </NavigationMenuList>
         </NavigationMenu>
     )
+}
+
+export function AIBlock() {
+    return (
+        <Drawer>
+            <DrawerTrigger className="px-2">
+                <Brain className="w-4 h-4" />
+            </DrawerTrigger>
+            <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                    <DrawerHeader>
+                        <DrawerTitle>Use EwwAI.</DrawerTitle>
+                        <DrawerDescription>Not having meme idea? No problem, Eww AI is here. </DrawerDescription>
+                    </DrawerHeader>
+                    <DrawerFooter>
+                        <button>Submit</button>
+                        <DrawerClose>
+                            <button>Close</button>
+                        </DrawerClose>
+                    </DrawerFooter>
+                </div>
+            </DrawerContent>
+        </Drawer>
+    );
 }

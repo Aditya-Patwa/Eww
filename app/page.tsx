@@ -118,6 +118,7 @@ export default function Home() {
 
       <section className="relative w-screen min-h-screen grid place-content-center p-4">
         <motion.h1 transition={{ duration: .75, delay: .35 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-gray-400/85 text-balance sm:text-7xl md:text-8xl lg:text-8xl">
+        {/* Eww, yeah, it's an NFT! */}
           <span className="text-white">Cryptoverse</span> is nothin without <span className="text-white">memes.</span>
         </motion.h1>
       </section>

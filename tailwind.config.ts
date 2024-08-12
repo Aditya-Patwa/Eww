@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      cursor: {
+        "fancy": "url(/mouse-pointer-2.svg), pointer",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -1,11 +1,40 @@
 import { createContext } from "react";
+import Frame from "./elements/Frame";
+import { Rectangle, Arc, Polygon } from "./elements/Shapes";
 
+export interface Layer {
+    name: string,
+    content: Rectangle | Arc | Polygon,
+    type: "layer",
+    visible: true,
+}
 
-interface PlaygroundContextInterface {
+export interface Group {
+    name: string,
+    content: (Group | Layer)[],
+    type: "group",
+    visible: true
+}
+export interface FrameBase {
+    name: string,
+    frame: Frame,
+    elements: (Group | Layer)[],
+    visible: true,
+    type: "frame"
+}
+
+export interface PlaygroundContextInterface {
+    elements: (FrameBase | Group | Layer)[],
+    activeElement: FrameBase | Group | Layer | null,
     activeMethod: string
 }
 
-const PlaygroundContext = createContext<PlaygroundContextInterface>({activeMethod: "pointer"});
+interface PC {
+ playgroundInterface: PlaygroundContextInterface, setPlaygroundInterface: Function
+}
+
+
+const PlaygroundContext = createContext<PC>({playgroundInterface: {elements: [], activeMethod: "ponter", activeElement: null}, setPlaygroundInterface: () => {}});
 
 export { PlaygroundContext };
 
