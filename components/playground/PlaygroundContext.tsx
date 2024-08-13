@@ -25,7 +25,7 @@ export interface FrameBase {
 
 export interface PlaygroundContextInterface {
     elements: (FrameBase | Group | Layer)[],
-    activeElement: FrameBase | Group | Layer | null,
+    activeElement: string | null,
     activeMethod: string
 }
 

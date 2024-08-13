@@ -62,7 +62,7 @@ export default function PlaygroundPage() {
                             {playgroundInterface.elements.map((element, i) => {
                                 if(element.type == "frame") {
                                     return (
-                                        <h1>
+                                        <h1 key={i}>
                                             {element.name}
                                         </h1>
                                     )
