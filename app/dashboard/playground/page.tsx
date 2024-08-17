@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Playground from "@/components/playground/Playground";
 import { ShapesMenu, AIBlock } from "@/components/menubar/menubar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Type, MousePointer2, Hand, Image, Frame } from "lucide-react";
 import {
     ToggleGroup,
@@ -15,9 +15,20 @@ import {
     AccordionTrigger,
   } from "@/components/ui/accordion";
 import { PlaygroundContext, PlaygroundContextInterface } from "@/components/playground/PlaygroundContext";
+// import {Frame as FrameElement} from "@/components/playground/elements/Frame";
 
 export default function PlaygroundPage() {
     const [playgroundInterface, setPlaygroundInterface] = useState<PlaygroundContextInterface>({ elements: [], activeMethod: "pointer", activeElement: null });
+    const [activeFrame, setActiveFrame] = useState<any>(null);
+    const [color, setColor] = useState("rgb(255, 0, 0)");
+
+    useEffect(() => {
+        playgroundInterface.elements.forEach((element) => {
+            if(element.type == "frame") {
+                setActiveFrame(element.frame);
+            }
+        })
+    }, [playgroundInterface]);
 
     return (
         <PlaygroundContext.Provider value={{playgroundInterface, setPlaygroundInterface}}>
@@ -73,7 +84,14 @@ export default function PlaygroundPage() {
                 </section>
                 <Playground />
                 <section className="absolute inset-y-0 right-0 p-16 z-20 bg-black/40 backdrop-blur-sm border-l border-zinc-100/20">
-
+                    <div>
+                        <h1>
+                            {playgroundInterface.activeElement}
+                        </h1>
+                    </div>
+                    <div>
+                        <input type="color" name="" defaultValue={color} color={color} id="" />
+                    </div>
                 </section>
             </main>
         </PlaygroundContext.Provider>

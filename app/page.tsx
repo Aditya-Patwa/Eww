@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence, useTransform } from "framer-motion";
 import Link from "next/link";
+import SlideShow from "@/components/Slideshow/Slideshow";
 import { useState, useEffect } from "react";
 
 function getRandomArbitrary(min: number, max: number) {
@@ -112,6 +113,11 @@ export default function Home() {
           <motion.h1 transition={{ duration: .75, delay: 0 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-white text-balance sm:text-7xl md:text-8xl lg:text-8xl my-16">
             Mint <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-400">unlimited</span> memes.
           </motion.h1>
+        </div>
+        <div className="md:my-16 grid place-content-center">
+          <motion.div className="w-[100vw] md:w-[90vw] opacity-0" transition={{ duration: .75, delay: .1 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}>
+            <SlideShow />
+          </motion.div>
         </div>
       </section>
 
