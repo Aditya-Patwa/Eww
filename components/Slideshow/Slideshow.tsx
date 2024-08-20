@@ -2,29 +2,10 @@
 
 export default function SlideShow() {
     return (
-        <main className="grid place-content-center">
-            <div className="grid w-[80vw] grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-4">
-                <div className="aspect-video rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
-
-                </div>
-                <div className="aspect-video rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
-
-                </div>
-                <div className="row-span-2 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
-
-                </div>
-                <div className="row-span-2 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
-
-                </div>
-                <div className="aspect-video rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
-
-                </div>
-                <div className="aspect-video rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
-
-                </div>
-
-
-                <div className="relative aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+        <>
+        <main className="w-full inline-flex flex-nowrap overflow-hidden md:grid md:place-content-center">
+            <div className="flex md:grid md:w-[80vw] md:grid-cols-3 md:grid-rows-4 md:gap-4 animate-infinite-scroll md:animate-none">
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
                     <div>
                         <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
                     </div>
@@ -40,58 +21,369 @@ export default function SlideShow() {
                         </h3>
                     </div>
                 </div>
-                {/* <div className="md:col-span-2 p-8 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800 grid md:grid-cols-3 gap-2">
-                    <div className="md:col-span-1 rounded-lg overflow-hidden">
-                        <img src="/images/slider/meme1.webp" className="w-full aspect-video" />
-                    </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
                     <div>
-                        <div className="py-4 px-8">
-                            <h1 className="text-2xl font-normal leading-none tracking-tighter text-white text-balance sm:text-2xl md:text-2xl lg:text-3xl">
-                                Meme #1
-                            </h1>
-                            <h3 className="flex text-xl items-center font-bold my-2">
-                                .01 SOL
-                                <span className="px-2">
-                                    <img src="/solicon.svg" className="w-4" alt="" />
-                                </span>
-                            </h3>
-                        </div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
                     </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="hidden md:block overflow-hidden row-span-2 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800 group cursor-pointer">
                     <div>
-                        <div className="grid place-content-center">
-                            <div>
-                            <h3 className="flex text-xl items-center font-thin my-2">
-                                Minted by 
-                                <span className="px-2 flex items-center text-sm">
-                                    <div className="w-4 h-4 rounded-lg bg-gradient-to-tr from-emerald-400 to-blue-400">
-
-                                    </div>
-                                    <div className="px-1">
-                                        xA0374...
-                                    </div>
-                                </span>
-                            </h3>
-                            </div>
-                        </div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="py-12 px-4">
+                        <h1 className="text-2xl text-white font-bold">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-white text-lg text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="mx-2 px-2 py-2 rounded-lg">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
                     </div>
                 </div>
-                <div className="md:row-span-2 p-8 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
+                <div className="hidden md:block overflow-hidden row-span-2 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800 group cursor-pointer">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="py-12 px-4">
+                        <h1 className="text-2xl text-white font-bold">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-white text-lg text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="mx-2 px-2 py-2 rounded-lg">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div className="flex md:hidden md:w-[80vw] md:grid-cols-3 md:grid-rows-4 md:gap-4 animate-infinite-scroll md:animate-none">
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="hidden md:block row-span-2 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
 
                 </div>
-                <div className="p-8 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                <div className="hidden md:block row-span-2 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
 
                 </div>
-                <div className="p-8 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
-
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
                 </div>
-                <div className="md:row-span-2 p-8 rounded-xl bg-gradient-to-tr from-zinc-500 to-zinc-50">
-
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
                 </div>
-                <div className="md:col-span-2 row-span-2 p-8 rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
 
-                </div> */}
+
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] mx-4 md:mx-0 md:min-w-[10px] aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
             </div>
         </main>
+
+
+        <main className="w-full my-16 inline-flex  md:hidden flex-nowrap overflow-hidden">
+            <div className="flex animate-infinite-scroll-right">
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div className="flex animate-infinite-scroll-right">
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div className="relative min-w-[70vw] sm:min-w-[60vw] md:min-w-[40vw] mx-4 aspect-video overflow-hidden group cursor-pointer rounded-xl bg-gradient-to-tr from-zinc-900 to-zinc-800">
+                    <div>
+                        <img src="/images/slider/meme1.webp" className="w-full transition ease-out duration-300 group-hover:scale-110" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 px-4 py-2 z-20">
+                        <h1 className="text-xl font-bold [text-shadow:_0_1px_0_rgb(0_0_0_/_100%)]">
+                            Meme #1
+                        </h1>
+                        <h3 className="flex text-md items-center font-semi-bold">
+                            Floor: 0.01 SOL
+                            <span className="px-2">
+                                <img src="/solicon.svg" className="w-4" alt="" />
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+        </>
     )
 }
 

@@ -114,15 +114,15 @@ export default function Home() {
             Mint <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-400">unlimited</span> memes.
           </motion.h1>
         </div>
-        <div className="md:my-16 grid place-content-center">
-          <motion.div className="w-[100vw] md:w-[90vw] opacity-0" transition={{ duration: .75, delay: .1 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}>
+        <div className="mt-16 grid place-content-center  [mask-image:_linear-gradient(to_right,transparent_0,_black_48px,_black_calc(100%-54px),transparent_100%)]">
+          <motion.div className="w-[100vw] opacity-0" transition={{ duration: .75, delay: .1 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}>
             <SlideShow />
           </motion.div>
         </div>
       </section>
 
 
-      <section className="relative w-screen min-h-screen grid place-content-center p-4">
+      <section className="relative w-screen min-h-screen grid place-content-center">
         <motion.h1 transition={{ duration: .75, delay: .35 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-5xl font-bold leading-none tracking-tighter text-gray-400/85 text-balance sm:text-7xl md:text-8xl lg:text-8xl">
         {/* Eww, yeah, it's an NFT! */}
           <span className="text-white">Cryptoverse</span> is nothin without <span className="text-white">memes.</span>
