@@ -1,5 +1,10 @@
 import type { Config } from "tailwindcss"
 
+
+// @ts-ignore
+// import {default: flattenColorPalette} from "tailwindcss/lib/util/flattenColorPalette";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -18,9 +23,6 @@ const config = {
       },
     },
     extend: {
-      cursor: {
-        "fancy": "url(/mouse-pointer-2.svg), pointer",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -70,24 +72,32 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        'infinite-scroll': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-100%)' },
-        },
-        'infinite-scroll-right': {
-          from: { transform: 'translateX(-100%)' },
-          to: { transform: 'translateX(0%)' },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'infinite-scroll': 'infinite-scroll 50s linear infinite',
-        'infinite-scroll-right': 'infinite-scroll-right 50s linear infinite',
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 } satisfies Config
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
 
 export default config
