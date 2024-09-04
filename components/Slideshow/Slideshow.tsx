@@ -9,13 +9,13 @@ export default function SlideShow() {
       <InfiniteMovingCards
         items={testimonials}
         direction="right"
-        speed="slow"
+        speed="normal"
       />
       <InfiniteMovingCards
         items={testimonials}
         direction="left"
         className="mt-8"
-        speed="slow"
+        speed="normal"
       />
     </div>
   );
