@@ -1,7 +1,8 @@
 "use client";
-import { motion, AnimatePresence, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import SlideShow from "@/components/Slideshow/Slideshow";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useState, useEffect } from "react";
 
 function getRandomArbitrary(min: number, max: number) {
@@ -30,6 +31,17 @@ export default function Home() {
 
   return (
     <main>
+      <header className="w-screen absolute top-0 py-3 px-4 sm:px-12 md:px-16 bg-zinc-black/30 flex justify-between items-center z-30">
+        <div>
+          <Link href={"/"} className="font-extrabold text-xl sm:text-2xl">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 to-zinc-600">EwwVerse</span>
+          </Link>
+        </div>
+
+        <div> 
+          <WalletMultiButton style={{backgroundColor: "rgba(40, 40, 40, .4)", backdropFilter: "blur(4px)", borderRadius: "10px", border: "1px solid rgba(255, 255, 255, .1)"}} />
+        </div>
+      </header>
       <div className="absolute h-screen w-screen top-0 overflow-hidden">
         <AnimatePresence>
           {emojies.map((emoji, i) => {
@@ -54,6 +66,7 @@ export default function Home() {
         <motion.h1 transition={{ duration: .75, delay: .2 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-6xl font-bold leading-none tracking-tighter text-white text-balance sm:text-7xl md:text-8xl lg:text-8xl">
           Incentivize your Memes
         </motion.h1>
+        
         <motion.h1 transition={{ duration: .5, delay: .55 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 text-center bg-clip-text py-2 text-xl font-normal tracking-tighter text-zinc-400 text-balance sm:text-xl md:text-2xl lg:text-3xl px-3">
           An NFT marketplace for your memes on <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Solana</span>
         </motion.h1>
@@ -61,6 +74,7 @@ export default function Home() {
           <Link href={"#"} className="mt-3 py-1.5 px-4 rounded-md bg-white text-black">
             Get started
           </Link>
+          {/* <WalletMultiButton style={{}} /> */}
           <Link href={"#"} className="mt-3 py-1.5 px-4 rounded text-white flex gap-1 items-center group">
             Learn more
             <span>
@@ -69,8 +83,6 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
-
-
 
       <section className="w-screen min-h-screen grid place-content-center p-4 py-10 mt-48">
         <div>
