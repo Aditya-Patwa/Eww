@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import SlideShow from "@/components/Slideshow/Slideshow";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { WalletBtn } from "@/components/WalletBtn";
 import { useState, useEffect } from "react";
 
 function getRandomArbitrary(min: number, max: number) {
@@ -38,8 +38,8 @@ export default function Home() {
           </Link>
         </div>
 
-        <div> 
-          <WalletMultiButton style={{backgroundColor: "rgba(40, 40, 40, .4)", backdropFilter: "blur(4px)", borderRadius: "10px", border: "1px solid rgba(255, 255, 255, .1)"}} />
+        <div>
+          <WalletBtn />
         </div>
       </header>
       <div className="absolute h-screen w-screen top-0 overflow-hidden">
@@ -71,7 +71,7 @@ export default function Home() {
           An NFT marketplace for your memes on <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Solana</span>
         </motion.h1>
         <motion.div transition={{ duration: .75, delay: .75 }} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} className="opacity-0 flex justify-center my-2">
-          <Link href={"#"} className="mt-3 py-1.5 px-4 rounded-md bg-white text-black">
+          <Link href={"/dashboard"} className="mt-3 py-1.5 px-4 rounded-md bg-white text-black">
             Get started
           </Link>
           {/* <WalletMultiButton style={{}} /> */}
