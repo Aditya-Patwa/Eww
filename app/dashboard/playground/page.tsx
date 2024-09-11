@@ -16,6 +16,7 @@ import {
   } from "@/components/ui/accordion";
 import { PlaygroundContext, PlaygroundContextInterface } from "@/components/playground/PlaygroundContext";
 // import {Frame as FrameElement} from "@/components/playground/elements/Frame";
+import { WalletBtn } from "@/components/WalletBtn";
 
 export default function PlaygroundPage() {
     const [playgroundInterface, setPlaygroundInterface] = useState<PlaygroundContextInterface>({ elements: [], activeMethod: "pointer", activeElement: null });
@@ -32,7 +33,7 @@ export default function PlaygroundPage() {
 
     return (
         <PlaygroundContext.Provider value={{playgroundInterface, setPlaygroundInterface}}>
-            <main className="h-screen w-screen overflow-hidden">
+            <main className="fixed top-0 h-screen w-screen overflow-hidden z-50">
                 <header className="fixed w-screen grid place-content-center z-10">
                     <nav className="w-screen py-2 px-16 bg-black/40 backdrop-blur-sm border-b border-zinc-100/10 grid justify-center">
                         {/* <div> */}
@@ -84,6 +85,9 @@ export default function PlaygroundPage() {
                 </section>
                 <Playground />
                 <section className="absolute inset-y-0 right-0 p-16 z-20 bg-black/40 backdrop-blur-sm border-l border-zinc-100/20">
+                    <div>
+                        <WalletBtn />
+                    </div>
                     <div>
                         <h1>
                             {playgroundInterface.activeElement}
