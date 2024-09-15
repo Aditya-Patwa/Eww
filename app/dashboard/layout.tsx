@@ -4,17 +4,23 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import Link from "next/link";
 import { WalletBtn } from "@/components/WalletBtn";
 import { Navbar } from "@/components/NavBar";
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
+import { mplCore } from '@metaplex-foundation/mpl-core'
+import { umiContext } from "@/components/UmiContext";
+// @ts-ignore
+import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-adapters';
 
 export default function Layout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const { connected } = useWallet();
+    const wallet = useWallet();
+    const umi = createUmi('https://api.devnet.solana.com').use(mplCore()).use(walletAdapterIdentity(wallet));
 
     return (
         <>
-            {connected ? (
+            {wallet.connected ? (
                 <main>
                     <header className="w-screen py-4 px-4 flex justify-between items-center border-b border-zinc-800">
                         <div>
@@ -59,7 +65,9 @@ export default function Layout({
                             <Navbar />
                         </div>
                     </header>
-                    {children}
+                    <umiContext.Provider value={umi}>
+                        {children}
+                    </umiContext.Provider>
                 </main>
             ) : (
                 <main>

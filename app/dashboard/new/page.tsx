@@ -5,12 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { generateSigner } from '@metaplex-foundation/umi';
-import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
-import { mplCore, create } from '@metaplex-foundation/mpl-core'
-// @ts-ignore
-import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-adapters';
+import { create } from '@metaplex-foundation/mpl-core';
+import { umiContext } from "@/components/UmiContext";
+import { useContext } from "react";
 
 export default function NewNFT() {
     const { toast } = useToast();
@@ -19,7 +17,7 @@ export default function NewNFT() {
     const [assetUrl, setAssetUrl] = useState("");
     const [file, setFile] = useState<File | null>(null);
     const [btnDisabled, setBtnDisabled] = useState(true);
-    const wallet = useWallet();
+    const umi = useContext(umiContext);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         if(e.target.files) {
@@ -40,17 +38,16 @@ export default function NewNFT() {
             const resData = await res.json();
     
             // const metadataUrl = resData.metadataUrl
-            const umi = createUmi('https://api.devnet.solana.com').use(mplCore()).use(walletAdapterIdentity(wallet));
-
+            
             const metadata = resData.metadata;
 
-            const assetSigner = generateSigner(umi);
+            const assetSigner = generateSigner(umi!);
 
-            const result = await create(umi, {
+            const result = await create(umi!, {
                 asset: assetSigner, 
                 name: name,
                 uri: metadata
-            }).sendAndConfirm(umi);
+            }).sendAndConfirm(umi!);
 
             console.log(result.signature.toString());
 

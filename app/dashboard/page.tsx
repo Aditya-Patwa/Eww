@@ -1,6 +1,25 @@
-import Link from "next/link";
+"use client";
+import { useContext, useEffect } from "react";
+import { umiContext } from "@/components/UmiContext";
+import { fetchAssetsByOwner } from '@metaplex-foundation/mpl-core';
+import { useWallet } from "@solana/wallet-adapter-react";
+import { fromWeb3JsPublicKey } from '@metaplex-foundation/umi-web3js-adapters';
 
 export default function Dashboard() {
+    const { publicKey } = useWallet();
+    const umi = useContext(umiContext);
+
+    useEffect(() => {
+        let owner = fromWeb3JsPublicKey(publicKey!);
+
+        const assetsByOwner = fetchAssetsByOwner(umi!, owner, {
+            skipDerivePlugins: false,
+        }).then((result) => {
+            console.log(result);
+        });
+
+    }, []);
+
     return (
         <>
             <main className="w-screen min-h-screen px-4 sm:px-6 md:px-10 lg:px-16 py-6 md:py-10">
