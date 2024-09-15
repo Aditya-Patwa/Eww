@@ -60,7 +60,7 @@ export function Navbar() {
                         </li>
                         <Separator className="my-1.5" />
                         <li className="px-3">
-                            <Link href={"/"} className="font-normal text-base lg:text-xl text-zinc-400 hover:text-zinc-50">
+                            <Link href={"/dashboard/new"} className="font-normal text-base lg:text-xl text-zinc-400 hover:text-zinc-50">
                                 Mint
                             </Link>
                         </li>

@@ -9,6 +9,7 @@ import { generateSigner } from '@metaplex-foundation/umi';
 import { create } from '@metaplex-foundation/mpl-core';
 import { umiContext } from "@/components/UmiContext";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NewNFT() {
     const { toast } = useToast();
@@ -18,6 +19,7 @@ export default function NewNFT() {
     const [file, setFile] = useState<File | null>(null);
     const [btnDisabled, setBtnDisabled] = useState(true);
     const umi = useContext(umiContext);
+    const router = useRouter();
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         if(e.target.files) {
@@ -49,7 +51,7 @@ export default function NewNFT() {
                 uri: metadata
             }).sendAndConfirm(umi!);
 
-            console.log(result.signature.toString());
+            router.push(`/dashboard/new/success/${assetSigner.publicKey.toString()}/`);
 
         } catch (e) {
             setBtnDisabled(false);

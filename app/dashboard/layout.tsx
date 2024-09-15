@@ -21,7 +21,7 @@ export default function Layout({
     return (
         <>
             {wallet.connected ? (
-                <main>
+                <main className="w-screen overflow-x-hidden">
                     <header className="w-screen py-4 px-4 flex justify-between items-center border-b border-zinc-800">
                         <div>
                             <Link href={"/"} className="font-extrabold text-xl sm:text-2xl">
@@ -53,7 +53,7 @@ export default function Layout({
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href={"/"} className="font-normal text-sm lg:text-xl text-zinc-400 hover:text-zinc-50">
+                                    <Link href={"/dashboard/new"} className="font-normal text-sm lg:text-xl text-zinc-400 hover:text-zinc-50">
                                         Mint
                                     </Link>
                                 </li>
@@ -70,7 +70,7 @@ export default function Layout({
                     </umiContext.Provider>
                 </main>
             ) : (
-                <main>
+                <main className="w-screen overflow-x-hidden">
                     <header className="w-screen absolute top-0 py-3 px-4 sm:px-12 md:px-16 bg-zinc-black/30 flex justify-between items-center z-30">
                         <div>
                             <Link href={"/"} className="font-extrabold text-xl sm:text-2xl">
